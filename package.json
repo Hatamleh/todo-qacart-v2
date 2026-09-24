@@ -1,0 +1,33 @@
+{
+  "name": "todo-qacart-v2",
+  "version": "1.0.0",
+  "description": "QAcart Todo — a SvelteKit + SQLite todo app with a REST API, built as a system under test for automation courses",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node build",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "reset": "rm -f data/todo.db data/todo.db-shm data/todo.db-wal"
+  },
+  "dependencies": {
+    "@lucide/svelte": "^1.48.0",
+    "better-sqlite3": "^13.0.3"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-node": "^5.5.7",
+    "@sveltejs/kit": "^2.70.3",
+    "@sveltejs/vite-plugin-svelte": "^7.3.1",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^26.6.2",
+    "svelte": "^5.57.1",
+    "svelte-check": "^4.7.6",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
