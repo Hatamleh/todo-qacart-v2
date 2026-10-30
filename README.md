@@ -63,7 +63,7 @@ All numbers live in **`src/lib/rules.ts`** (a mirror of Flutter's `lib/rules.dar
 | R4–R6 | List, complete, edit, delete todos | `services/todos.ts` | 400 `EMPTY_TITLE` |
 | R7 | Free plan: max **3** todos | `addTodo()` (inside a transaction) | 403 `TODO_LIMIT_REACHED` |
 | R8 | Upgrade requires accepting the terms | `subscribe()` | 400 `TERMS_NOT_ACCEPTED` |
-| R9 | Plans are **5 / 8 / 10** (Starter / Plus / Pro) | `subscribe()` | 400 `INVALID_PLAN` |
+| R9 | Plans are **5 / 8 / 10 / 15** (Starter / Plus / Pro / Max) | `subscribe()` | 400 `INVALID_PLAN` |
 | R11 | Cancel only with **≤ 3** todos | `cancel()` | 409 `CANCEL_BLOCKED` |
 | R12 | No switching plans without cancelling | `subscribe()` + a unique index in SQLite | 409 `PLAN_ALREADY_ACTIVE` |
 | R14 | Deep links can't bypass rules | deep-link routes call the same services | — |
@@ -111,7 +111,7 @@ Base: `/api/v1`. JSON in, JSON out. Every error has the same shape:
 | DELETE | `/todos/:id` | ✅ | — | deleted todo |
 | GET | `/plans` | — | — | `{ freeTodoLimit, cancelKeepLimit, plans: [{ todoLimit, name }] }` |
 | GET | `/subscription` | ✅ | — | account |
-| POST | `/subscription` | ✅ | `{ todoLimit: 5\|8\|10, acceptedTerms: true }` | 201 account |
+| POST | `/subscription` | ✅ | `{ todoLimit: 5\|8\|10\|15, acceptedTerms: true }` | 201 account |
 | DELETE | `/subscription` | ✅ | — | account (back on Free) |
 | POST | `/test/reset` | — | — | 204 — wipes everything, re-seeds. **Only with `TEST_HOOKS=1`**, otherwise 404 |
 

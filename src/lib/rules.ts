@@ -8,7 +8,7 @@
 export const FREE_TODO_LIMIT = 3
 
 /** The choices shown in the upgrade dropdown. */
-export const PLAN_TODO_LIMITS = [5, 8, 10] as const
+export const PLAN_TODO_LIMITS = [5, 8, 10, 15] as const
 
 /** Before a user is allowed to cancel, they must be down to this many todos. */
 export const CANCEL_KEEP_LIMIT = 3
@@ -24,6 +24,8 @@ export function planName(todoLimit: number): string {
       return 'Plus'
     case 10:
       return 'Pro'
+    case 15:
+      return 'Max'
     default:
       return 'Custom'
   }
